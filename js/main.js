@@ -54,10 +54,21 @@ function renderShow() {
 function renderFavouriteShows(favoritesShows) {
   listFav.innerHTML = '';
   for (const item of favoritesShows) {
-    listFav.innerHTML += renderShow(item);
+    let showElement = '';
+    showElement += `
+    <div id="${item.show.id}" class="js-card" >
+    <img src="${
+      item.show.image
+        ? item.show.image.medium
+        : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
+    }"/> 
+    <h2> ${item.show.name} </h2>`;
+    showElement += '</div>';
+    listFav.innerHTML += showElement;
   }
 }
 
+//Función manejadora al hacer click sobre los divs o cartas de las series:
 function handleClickShow(event) {
   const idShow = event.currentTarget.id;
   console.log(idShow);
@@ -66,11 +77,9 @@ function handleClickShow(event) {
   const indexFav = favList.findIndex(
     (item) => item.show.id === foundShow.show.id
   );
-  console.log(indexFav);
   //Si no está (-1) lo añade
   if (indexFav === -1) {
     favList.push(foundShow);
-
     //Si está lo eliminará
   } else {
     favList.splice(indexFav, 1);
@@ -92,7 +101,7 @@ function handleSearchButton(event) {
   renderShow();
 }
 
-// así quitamos el mensaje de error, si se inicia búsqueda sin rellenar input
+//Con esta función quitamos el mensaje de error, si se inicia búsqueda sin rellenar input
 function handleInput() {
   listForm.innerHTML = '';
 }
