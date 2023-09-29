@@ -11,7 +11,7 @@ const listFav = document.querySelector('.js-fav-list'); // lista que almacenará
 //Otras variables:
 const defaultImageHTML =
   '<img class="search_img" src="//via.placeholder.com/210x295/ffffff/666666/?text=TV'; // Imágen de respaldo
-const URL = '//api.tvmaze.com/search/shows?q='; //URL de la API
+const URL = '//api.tvmaze.com/singlesearch/shows?q='; //URL de la API
 
 //Funciones:
 function renderShow() {
