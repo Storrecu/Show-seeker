@@ -4,15 +4,29 @@
   box-sizing: border-box;
 }
 
-.js-form-list {
+.list-container {
   display: flex;
+  flex-direction: row-reverse;
 }
+
+.js-form-list {
+  display: grid;
+  grid-column: 1fr, 1fr, 1fr;
+  width: 50vw;
+  height: 100vh;
+}
+
+.js-fav.list {
+  width: 50vw;
+  height: 100vh;
+}
+
 .js-card {
   border: 2px solid black;
   background-color: lightgrey;
 }
 
-.fav {
-  background-color: darkgray;
-  color: white;
+.js-fav {
+  background-color: black;
+  color: lightgray;
 }

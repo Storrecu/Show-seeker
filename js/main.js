@@ -1,5 +1,6 @@
 'use strict';
 
+//VARIABLES:
 //Elementos de HTML que nos traemos a JS:
 const input = document.querySelector('.js-input-search'); // casilla de búsqueda
 const btnSearch = document.querySelector('.js-btn-search'); // botón para buscar
@@ -10,10 +11,11 @@ const listFav = document.querySelector('.js-fav-list'); // lista que almacenará
 const defaultImageHTML =
   '<img class="search_img" src="//via.placeholder.com/210x295/ffffff/666666/?text=TV'; // Imágen de respaldo
 const URL = '//api.tvmaze.com/search/shows?q='; //URL de la API
-let favList = [];
-let showsList = [];
+let favList = []; //lista de favoritos
+let showsList = []; // lista de resultados
 
-//Funciones:
+//FUNCIONES:
+//Función para pintar la lista de resultados:
 function renderShow() {
   const inputValue = input.value;
   const URL = `//api.tvmaze.com/search/shows?q=${inputValue}`;
@@ -34,7 +36,7 @@ function renderShow() {
             let showElement = '';
             showElement += `
             <div id="${item.show.id}" class="js-card" >
-            <img src="${
+            <img class="img" src="${
               item.show.image
                 ? item.show.image.medium
                 : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
@@ -50,26 +52,43 @@ function renderShow() {
     listForm.innerHTML = 'Write any TV show to start';
   }
 }
-
+//Función para pintar la lista de favoritos:
 function renderFavouriteShows(favoritesShows) {
   listFav.innerHTML = '';
   for (const item of favoritesShows) {
     let showElement = '';
     showElement += `
-    <div id="${item.show.id}" class="js-card" >
+    <div id="${item.show.id}" class="js-fav">
+    <span> X </span> 
     <img src="${
       item.show.image
         ? item.show.image.medium
         : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
-    }"/> 
+    }" 
     <h2> ${item.show.name} </h2>`;
     showElement += '</div>';
     listFav.innerHTML += showElement;
   }
 }
 
+//llamamos a todos los div con clase js-card, se les añade evento listener click.
+const addToFavourites = () => {
+  const allShows = document.querySelectorAll('.js-card');
+  for (const item of allShows) {
+    item.addEventListener('click', handleClickShow);
+  }
+};
+
+//FUNCIONES MANEJADORAS:
+//Función manejadora del botón de "buscar":
+function handleSearchButton(event) {
+  event.preventDefault();
+  renderShow();
+}
+
 //Función manejadora al hacer click sobre los divs o cartas de las series:
 function handleClickShow(event) {
+  event.preventDefault();
   const idShow = event.currentTarget.id;
   console.log(idShow);
   let foundShow = showsList.find((item) => item.show.id.toString() === idShow);
@@ -87,21 +106,7 @@ function handleClickShow(event) {
   renderFavouriteShows(favList);
 }
 
-//llamamos a todos los div con clase js-card, se les añade evento listener click.
-const addToFavourites = () => {
-  const allShows = document.querySelectorAll('.js-card');
-  for (const item of allShows) {
-    item.addEventListener('click', handleClickShow);
-  }
-};
-
-//Funciones manejadoras:
-function handleSearchButton(event) {
-  event.preventDefault();
-  renderShow();
-}
-
-//Con esta función quitamos el mensaje de error, si se inicia búsqueda sin rellenar input
+//Con esta función manejadora del input, quitamos el mensaje de error, si se inicia búsqueda sin rellenar input
 function handleInput() {
   listForm.innerHTML = '';
 }
