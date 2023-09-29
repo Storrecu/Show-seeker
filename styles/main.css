@@ -3,3 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.js-form-list {
+  display: flex;
+}
+.js-card {
+  border: 2px solid black;
+  background-color: lightgrey;
+}
+
+.fav {
+  background-color: darkgray;
+  color: white;
+}
