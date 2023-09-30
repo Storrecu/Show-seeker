@@ -29,4 +29,9 @@
 .js-fav {
   background-color: black;
   color: lightgray;
+  cursor: pointer;
+}
+
+.cross {
+  cursor: pointer;
 }

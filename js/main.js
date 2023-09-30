@@ -14,6 +14,15 @@ const URL = '//api.tvmaze.com/search/shows?q='; //URL de la API
 let favList = []; //lista de favoritos
 let showsList = []; // lista de resultados
 
+/* Con este bloque de código, compruebo al arrancar la página, que hayan datos en el local stroage. favList es la variable que tiene la lista de favoritos. Cuando storedFavorites tiene datos, los copiamos a favList y luego llamamos a la función renderFavouriteShows(favList) para mostrarlos en el HTML */
+const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
+if (storedFavorites) {
+  favList = storedFavorites;
+  renderFavouriteShows(favList);
+} else {
+  renderShow();
+}
+
 //FUNCIONES:
 //Función para pintar la lista de resultados:
 function renderShow() {
@@ -43,7 +52,7 @@ function renderShow() {
             }"/> 
             <h2> ${item.show.name} </h2>`;
             showElement += '</div>';
-            listForm.innerHTML += showElement; // a la sección le pongo como hijo la caja que acabo de crear
+            listForm.innerHTML += showElement;
           }
           addToFavourites();
         }
@@ -59,7 +68,7 @@ function renderFavouriteShows(favoritesShows) {
     let showElement = '';
     showElement += `
     <div id="${item.show.id}" class="js-fav">
-    <span> X </span> 
+    <span class="cross"> X </span> 
     <img src="${
       item.show.image
         ? item.show.image.medium
@@ -71,7 +80,7 @@ function renderFavouriteShows(favoritesShows) {
   }
 }
 
-//llamamos a todos los div con clase js-card, se les añade evento listener click.
+//llamamos a todos los div con clase js-card, se les añade evento listener tipo click.
 const addToFavourites = () => {
   const allShows = document.querySelectorAll('.js-card');
   for (const item of allShows) {
@@ -90,9 +99,7 @@ function handleSearchButton(event) {
 function handleClickShow(event) {
   event.preventDefault();
   const idShow = event.currentTarget.id;
-  console.log(idShow);
   let foundShow = showsList.find((item) => item.show.id.toString() === idShow);
-  console.log(foundShow);
   const indexFav = favList.findIndex(
     (item) => item.show.id === foundShow.show.id
   );
@@ -103,13 +110,25 @@ function handleClickShow(event) {
   } else {
     favList.splice(indexFav, 1);
   }
+  localStorage.setItem('favorites', JSON.stringify(favList)); // guardamos en local storage las series añadidas a favoritos. La llamamos aquí porque es en este punto donde de generan cambios en la lista de favoritos
   renderFavouriteShows(favList);
+}
+
+function handleClickDelete() {
+  listFav.innerHTML = '';
 }
 
 //Con esta función manejadora del input, quitamos el mensaje de error, si se inicia búsqueda sin rellenar input
 function handleInput() {
   listForm.innerHTML = '';
 }
+
+const crossDeleteFavs = () => {
+  const deletAllFavs = document.querySelectorAll('.cross');
+  for (const item of deletAllFavs) {
+    item.addEventListener('click', handleClickDelete);
+  }
+};
 
 //Eventos:
 btnSearch.addEventListener('click', handleSearchButton);
