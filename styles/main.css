@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.tenor-gif-embed {
+  width: 70px;
+  height: 70px;
+}
+
 .list-container {
   display: flex;
   flex-direction: row-reverse;
@@ -17,6 +22,7 @@
 }
 
 .js-fav.list {
+  display: grid;
   width: 50vw;
   height: 100vh;
 }
@@ -29,6 +35,10 @@
 .js-fav {
   background-color: black;
   color: lightgray;
+  cursor: pointer;
+}
+
+.js-delete-fav {
   cursor: pointer;
 }
 

@@ -6,6 +6,7 @@ const input = document.querySelector('.js-input-search'); // casilla de búsqued
 const btnSearch = document.querySelector('.js-btn-search'); // botón para buscar
 const listForm = document.querySelector('.js-form-list'); // lista que muestra la serie que has buscado
 const listFav = document.querySelector('.js-fav-list'); // lista que almacenará los favoritos
+const btnDelete = document.querySelector('.js-delete-fav');
 
 //Otras variables:
 const defaultImageHTML =
@@ -14,6 +15,7 @@ const URL = '//api.tvmaze.com/search/shows?q='; //URL de la API
 let favList = []; //lista de favoritos
 let showsList = []; // lista de resultados
 
+//LocalStorage:
 /* Con este bloque de código, compruebo al arrancar la página, que hayan datos en el local stroage. favList es la variable que tiene la lista de favoritos. Cuando storedFavorites tiene datos, los copiamos a favList y luego llamamos a la función renderFavouriteShows(favList) para mostrarlos en el HTML */
 const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
 if (storedFavorites) {
@@ -80,6 +82,7 @@ function renderFavouriteShows(favoritesShows) {
   }
 }
 
+//Arrow functions para añadir eventos a elementos dinámicos:
 //llamamos a todos los div con clase js-card, se les añade evento listener tipo click.
 const addToFavourites = () => {
   const allShows = document.querySelectorAll('.js-card');
@@ -87,15 +90,28 @@ const addToFavourites = () => {
     item.addEventListener('click', handleClickShow);
   }
 };
+//Función con la que añadimos evento listener a las X de las series de favoritos
+const crossDeleteFavs = () => {
+  const deletAllFavs = document.querySelectorAll('.cross');
+  for (const item of deletAllFavs) {
+    item.addEventListener('click', handleClickDelete);
+  }
+};
+crossDeleteFavs();
 
 //FUNCIONES MANEJADORAS:
+function handleDeleteBtn() {
+  listFav.innerHTML = '';
+  localStorage.clear();
+}
+
 //Función manejadora del botón de "buscar":
 function handleSearchButton(event) {
   event.preventDefault();
   renderShow();
 }
 
-//Función manejadora al hacer click sobre los divs o cartas de las series:
+//Función manejadora divs dinámicos
 function handleClickShow(event) {
   event.preventDefault();
   const idShow = event.currentTarget.id;
@@ -114,22 +130,20 @@ function handleClickShow(event) {
   renderFavouriteShows(favList);
 }
 
-function handleClickDelete() {
-  listFav.innerHTML = '';
+//Función manejadora X dinámica
+function handleClickDelete(event) {
+  console.log('estoy pulsando a la X');
+  if (event.target.classList.contains('cross')) {
+    event.target.parentElement.remove();
+  }
 }
 
-//Con esta función manejadora del input, quitamos el mensaje de error, si se inicia búsqueda sin rellenar input
+//Función manejadora del input, para que el mensaje de error no esté siempre visible
 function handleInput() {
   listForm.innerHTML = '';
 }
 
-const crossDeleteFavs = () => {
-  const deletAllFavs = document.querySelectorAll('.cross');
-  for (const item of deletAllFavs) {
-    item.addEventListener('click', handleClickDelete);
-  }
-};
-
 //Eventos:
+btnDelete.addEventListener('click', handleDeleteBtn);
 btnSearch.addEventListener('click', handleSearchButton);
 input.addEventListener('change', handleInput);
