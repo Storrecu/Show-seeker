@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-unused-vars */
 'use strict';
 
 //VARIABLES:
@@ -9,8 +11,6 @@ const listFav = document.querySelector('.js-fav-list'); // lista que almacenará
 const btnDelete = document.querySelector('.js-delete-fav');
 
 //Otras variables:
-const defaultImageHTML =
-  '<img class="search_img" src="//via.placeholder.com/210x295/ffffff/666666/?text=TV'; // Imágen de respaldo
 const URL = '//api.tvmaze.com/search/shows?q='; //URL de la API
 let favList = []; //lista de favoritos
 let showsList = []; // lista de resultados
@@ -132,7 +132,6 @@ function handleClickShow(event) {
 
 //Función manejadora X dinámica
 function handleClickDelete(event) {
-  console.log('estoy pulsando a la X');
   if (event.target.classList.contains('cross')) {
     event.target.parentElement.remove();
   }
