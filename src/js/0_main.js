@@ -46,14 +46,14 @@ function renderShow() {
           for (const item of showsList) {
             let showElement = '';
             showElement += `
-            <div id="${item.show.id}" class="js-card" >
+            <li id="${item.show.id}" class="js-card" >
             <img class="img" src="${
               item.show.image
                 ? item.show.image.medium
                 : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
             }"/> 
             <h2>${item.show.name} </h2>`;
-            showElement += '</div>';
+            showElement += '</li>';
             listForm.innerHTML += showElement;
           }
           addToFavourites();
@@ -63,13 +63,14 @@ function renderShow() {
     listForm.innerHTML = 'Write any TV show to start';
   }
 }
+
 //Función para pintar la lista de favoritos:
 function renderFavouriteShows(favoritesShows) {
   listFav.innerHTML = '';
   for (const item of favoritesShows) {
     let showElement = '';
     showElement += `
-    <div id="${item.show.id}" class="js-fav">
+    <li id="${item.show.id}" class="js-fav">
     <span class="js-fav-cross"> X </span> 
     <img class="js-fav-img" src="${
       item.show.image
@@ -77,7 +78,7 @@ function renderFavouriteShows(favoritesShows) {
         : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
     }" /> 
     <h2 class="js-fav-title" >${item.show.name}</h2>`;
-    showElement += '</div>';
+    showElement += '</li>';
     listFav.innerHTML += showElement;
   }
 }
@@ -92,7 +93,7 @@ const addToFavourites = () => {
 };
 //Función con la que añadimos evento listener a las X de las series de favoritos
 const crossDeleteFavs = () => {
-  const deletAllFavs = document.querySelectorAll('.cross');
+  const deletAllFavs = document.querySelectorAll('.js-fav-cross');
   for (const item of deletAllFavs) {
     item.addEventListener('click', handleClickDelete);
   }
@@ -126,16 +127,18 @@ function handleClickShow(event) {
   } else {
     favList.splice(indexFav, 1);
   }
+  event.currentTarget.classList.toggle('selected');
   localStorage.setItem('favorites', JSON.stringify(favList)); // guardamos en local storage las series añadidas a favoritos. La llamamos aquí porque es en este punto donde de generan cambios en la lista de favoritos
   renderFavouriteShows(favList);
 }
 
 //Función manejadora X dinámica
 function handleClickDelete(event) {
-  if (event.target.classList.contains('cross')) {
+  if (event.target.classList.contains('js-fav-cross')) {
     event.target.parentElement.remove();
   }
 }
+btnDelete.addEventListener('click', handleDeleteBtn);
 
 //Función manejadora del input, para que el mensaje de error no esté siempre visible
 function handleInput() {
