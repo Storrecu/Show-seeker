@@ -9,6 +9,8 @@ En el listado de favoritos se puede implementar de forma opcional diversas forma
 - pulsando la 'X' en el lateral de la imágen
 - pulsando en botón 'Erase all' que además también vacía el localStorage del navegador.
 
+! [Diagrama de flujo](https://raw.githubusercontent.com/Storrecu/modulo-2-evaluacion-final-Storrecu/main/assets/images/diagrama.png)
+
 ## Primer punto a cubrir: 
 
 1. Crear una estructura básica que incluye: 
