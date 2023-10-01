@@ -1,0 +1,21 @@
+.js-form-title {
+  height: 10%;
+  grid-column: span 3;
+}
+
+.js-form-list {
+  width: 600px;
+  height: 400px;
+  overflow: auto;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.js-card {
+  border: 2px solid black;
+  background-color: lightgrey;
+
+  grid-column: span 1;
+}

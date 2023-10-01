@@ -52,7 +52,7 @@ function renderShow() {
                 ? item.show.image.medium
                 : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
             }"/> 
-            <h2> ${item.show.name} </h2>`;
+            <h2>${item.show.name} </h2>`;
             showElement += '</div>';
             listForm.innerHTML += showElement;
           }
@@ -70,13 +70,13 @@ function renderFavouriteShows(favoritesShows) {
     let showElement = '';
     showElement += `
     <div id="${item.show.id}" class="js-fav">
-    <span class="cross"> X </span> 
-    <img src="${
+    <span class="js-fav-cross"> X </span> 
+    <img class="js-fav-img" src="${
       item.show.image
         ? item.show.image.medium
         : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
-    }" 
-    <h2> ${item.show.name} </h2>`;
+    }" /> 
+    <h2 class="js-fav-title" >${item.show.name}</h2>`;
     showElement += '</div>';
     listFav.innerHTML += showElement;
   }

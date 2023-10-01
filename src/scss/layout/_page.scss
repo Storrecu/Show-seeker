@@ -1,8 +1,6 @@
 .list-container {
   display: flex;
   flex-direction: row-reverse;
-}
-
-.cross {
-  cursor: pointer;
+  border: 2px solid $color1;
+  border-radius: 10px;
 }
