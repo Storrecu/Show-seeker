@@ -6,8 +6,8 @@ Bienvenida/o al proyecto de la evaluación final del módulo 2.
 
 En este proyecto el objetivo era crear un buscador de series, el cual, permite seleccionar una serie y guardarla en un listado de favoritos. 
 En el listado de favoritos se puede implementar de forma opcional diversas formas de eliminar las series agregadas:
--pulsando la 'X' en el lateral de la imágen
--pulsando en botón 'Erase all' que además también vacía el localStorage del navegador.
+- pulsando la 'X' en el lateral de la imágen
+- pulsando en botón 'Erase all' que además también vacía el localStorage del navegador.
 
 ## Primer punto a cubrir: 
 
