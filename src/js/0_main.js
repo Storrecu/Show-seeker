@@ -47,12 +47,12 @@ function renderShow() {
             let showElement = '';
             showElement += `
             <li id="${item.show.id}" class="js-card" >
-            <img class="img" src="${
+            <img class="js-card-img" src="${
               item.show.image
                 ? item.show.image.medium
                 : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
             }"/> 
-            <h2>${item.show.name} </h2>`;
+            <h2 class="js-card-title">${item.show.name} </h2>`;
             showElement += '</li>';
             listForm.innerHTML += showElement;
           }
@@ -71,13 +71,13 @@ function renderFavouriteShows(favoritesShows) {
     let showElement = '';
     showElement += `
     <li id="${item.show.id}" class="js-fav">
-    <span class="js-fav-cross"> X </span> 
     <img class="js-fav-img" src="${
       item.show.image
         ? item.show.image.medium
         : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
     }" /> 
-    <h2 class="js-fav-title" >${item.show.name}</h2>`;
+    <h2 class="js-fav-title" >${item.show.name}</h2>
+    <span class="js-fav-cross"> X </span> `;
     showElement += '</li>';
     listFav.innerHTML += showElement;
   }

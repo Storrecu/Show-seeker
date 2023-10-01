@@ -1,6 +1,5 @@
 .results-list {
-  width: 50%;
-  background-color: #f4dfeb;
+  width: 70vw;
 }
 
 .js-form-title {
@@ -21,8 +20,16 @@
 }
 
 .js-card {
-  border: 2px solid black;
-  background-color: lightgrey;
-  width: calc((100% - 30px) / 4);
-  grid-column: span 1;
+  background-color: #f4dfeb;
+  color: $color1;
+  list-style: none;
+  &-img {
+    width: 200px;
+    height: 200px;
+  }
+  &-title {
+    margin: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
 }
