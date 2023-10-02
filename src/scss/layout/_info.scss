@@ -1,0 +1,22 @@
+.info {
+  padding: 5%;
+  border: 2px solid $color2;
+  border-radius: 10px;
+  @media all and (min-width: 768px) {
+    padding: 1.5%;
+  }
+  &-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #341514;
+    text-align: center;
+    padding-bottom: 1rem;
+    @media all and (min-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+  &-text {
+    color: $color1;
+    display: inline;
+  }
+}
