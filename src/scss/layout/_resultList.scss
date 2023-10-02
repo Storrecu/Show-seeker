@@ -10,27 +10,30 @@
 }
 
 .js-form-list {
-  width: 600px;
-  overflow: scroll;
-  margin: auto;
+  padding: 4rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: 3rem;
+  list-style: none;
 }
 
 .js-card {
   background-color: #f4dfeb;
   color: $color1;
-  list-style: none;
+  width: 25%;
+  height: 25%;
   &-img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+    margin: auto;
   }
   &-title {
     margin: 1rem;
     font-size: 1.5rem;
     font-weight: 600;
+    overflow-y: auto;
+    padding-bottom: 2rem;
   }
 }
 

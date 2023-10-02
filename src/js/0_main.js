@@ -76,13 +76,13 @@ function renderFavouriteShows(favoritesShows) {
     let showElement = '';
     showElement += `
     <li id="${item.show.id}" class="js-fav">
+    <span class="js-fav-cross"> X </span>
     <img class="js-fav-img" src="${
       item.show.image
         ? item.show.image.medium
         : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
     }" /> 
-    <h2 class="js-fav-title" >${item.show.name}</h2>
-    <span class="js-fav-cross"> X </span> `;
+    <h2 class="js-fav-title" >${item.show.name}</h2> `;
     showElement += '</li>';
     listFav.innerHTML += showElement;
   }

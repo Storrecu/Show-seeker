@@ -19,6 +19,11 @@ input[type='text'] {
   width: 150px;
   border: 1px solid $borders;
   display: inline;
+  padding: 5px;
+}
+
+input::placeholder {
+  padding: 3px;
 }
 
 .js-btn-search {
@@ -48,6 +53,7 @@ input[type='text'] {
   //UL
   width: 90%;
   margin-left: 10%;
+  list-style: none;
 }
 
 .js-fav {
@@ -56,23 +62,29 @@ input[type='text'] {
   margin: 1rem;
   display: block;
   color: $color2;
-  width: 80%;
-  list-style: none;
   cursor: pointer;
   &-img {
-    margin: 1rem;
-    width: 100px;
-    height: 100px;
-    display: inline-block;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    display: block;
+    padding: 1rem;
   }
   &-title {
-    margin: 1rem;
+    margin-left: 25%;
     font-size: 1.5rem;
     font-weight: 600;
-    display: inline-block;
+    display: block;
+    padding-bottom: 2rem;
   }
   &-cross {
-    margin: 1rem;
+    background-color: $color1;
+    border: 1px solid $borders;
+    border-radius: 10px;
+    width: 20px;
+    margin-left: 80%;
+    margin-top: 2rem;
+    text-align: center;
     cursor: pointer;
     display: inline-block;
   }
