@@ -70,9 +70,9 @@ function renderShow() {
 renderShow();
 
 // Función para pintar la lista de favoritos:
-function renderFavouriteShows(favoritesShows) {
+function renderFavouriteShows() {
   listFav.innerHTML = '';
-  for (const item of favoritesShows) {
+  for (const item of favList) {
     let showElement = '';
     showElement += `
     <li id="${item.show.id}" class="js-fav">
