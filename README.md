@@ -1,6 +1,8 @@
 # Evaluación final módulo 2: JavaScript.
 
 Bienvenida/o al proyecto de la evaluación final del módulo 2.
+Importante, el proyecto no es responsive, si lo visualizas desde un movil o tablet tendrás problemas de visualización.
+Para poder visualizarlo correctamente usa un ordenador. 
 
 ## Objetivo:
 
@@ -31,7 +33,7 @@ En el listado de favoritos se puede implementar de forma opcional diversas forma
 
 3. Una vez aparecen los resultados de la búsqueda al hacer click en una de ellas se añade en la lista de favoritos. Al hacer click debe pasar lo siguiente:
 
-- El color de fondo y el de fuente se inetercambian, indicando que es una serie favorita. (**punto no logrado**)
+- El color de fondo y el de fuente se inetercambian, indicando que es una serie favorita.
 - El listado de favoritos debe quedar en la parte izquierda de la pantalla bajo el formulario de busqueda.
 - Las series favoritas se siguen mostrando en la izquierda aunque los usuarios realicen otra búsqueda.
 
@@ -41,7 +43,7 @@ En el listado de favoritos se puede implementar de forma opcional diversas forma
 
 ## Quinto punto (BONUS):
 
-- Hacer funcional la X al lado de cada serie de la lista de favoritos de forma que se elimine la serie clicada también del localStorage. (**punto logrado parcialmente, no se elimina del localStorage**)
+- Hacer funcional la X al lado de cada serie de la lista de favoritos de forma que se elimine la serie clicada también del localStorage. 
 - Al hacer click sobre una serie de la lista de resultados, hacer que se añada o se elimine de la lista de favoritos.
 - Al realizar una búsqueda nueva, si aparece alguna de las series que tenemos en favoritos, debe mantener el estilo resaltado comentado en el tercer punto. (**punto no logrado**)
 - Incluir un botón que elimine toda la lista de favoritos.
