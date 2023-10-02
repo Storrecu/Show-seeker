@@ -1,3 +1,9 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .list-container {
   display: flex;
   flex-direction: row-reverse;
