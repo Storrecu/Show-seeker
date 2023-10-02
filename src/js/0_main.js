@@ -67,6 +67,7 @@ function renderShow() {
     listForm.innerHTML = 'Write any show to start';
   }
 }
+renderShow();
 
 // Función para pintar la lista de favoritos:
 function renderFavouriteShows(favoritesShows) {
@@ -89,12 +90,10 @@ function renderFavouriteShows(favoritesShows) {
 
 // Función arrow con la que añadimos evento listener a las X de las series de favoritos
 const crossDeleteFavs = () => {
-  const deletAllFavs = document.querySelectorAll('.js-fav-cross');
-  for (const item of deletAllFavs) {
-    item.addEventListener('click', handleClickDelete);
-  }
+  listFav.addEventListener('click', handleClickDelete);
 };
-crossDeleteFavs();
+
+crossDeleteFavs(); // Llama a esta función una vez al inicio
 
 // Función manejadora del botón 'Erase all'
 function handleDeleteBtn() {
@@ -117,10 +116,13 @@ function handleClickShow(event) {
   const indexFav = favList.findIndex(
     (item) => item.show.id === foundShow.show.id
   );
+  const showElement = event.currentTarget; // NOTE: con esta variable cambia el estilo al hacer click
   if (indexFav === -1) {
     favList.push(foundShow);
+    showElement.classList.add('is-favorite');
   } else {
     favList.splice(indexFav, 1);
+    showElement.classList.remove('is-favorite');
   }
   localStorage.setItem('favorites', JSON.stringify(favList)); // NOTE: guardamos en local storage las series añadidas a favoritos. La llamo aquí porque es en este punto donde se generan cambios en la lista de favoritos
   renderFavouriteShows(favList);
@@ -128,7 +130,19 @@ function handleClickShow(event) {
 
 // Función manejadora X dinámica
 function handleClickDelete(event) {
+  const clickedItemId = event.target.closest('.js-fav').id;
+
   if (event.target.classList.contains('js-fav-cross')) {
+    const indexFav = favList.findIndex(
+      (item) => item.show.id === parseInt(clickedItemId)
+    );
+
+    if (indexFav !== -1) {
+      favList.splice(indexFav, 1);
+      localStorage.setItem('favorites', JSON.stringify(favList)); // Actualiza el localStorage
+      renderFavouriteShows(favList); // Actualiza la vista
+    }
+
     event.target.parentElement.remove();
   }
 }
