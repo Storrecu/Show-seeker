@@ -1,68 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adalab Web Starter Kit</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="icon" href="./assets/images/favicon.png" />
-  </head>
 
-  <body>
-    <div class="page">
-      <header class="page__header">
-        <img src="./assets/images/logo-adalab.png" alt="Adalab">
-        <h1>Bienvenidos a Adalab</h1>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show seeker</title>
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
 
-      <main class="page__main">
-        <h2>Este es el starter kit de Adalab</h2>
-        <p>Lo usamos para aprender:</p>
-        <ul class="main__list">
-          <li>Sass</li>
-          <li>HTML partials</li>
-          <li>Gulp</li>
-          <li>y muchas cosas más</li>
-        </ul>
-        <p>Si quieres saber cúales son las rutas correctas para:</p>
-        <ul class="main__list">
-          <li>
-            una <code class="code">&lt;img /&gt;</code> mira el fichero
-            <code class="code">./src/html/partials/header.html</code>.
-          </li>
-          <li>
-            y para un <code class="code">background-image</code> mira el fichero
-            <code class="code">./src/html/scss/layout/_page.scss</code>.
-          </li>
-        </ul>
-        <p>
-          Si quieres saber cómo usar un partial HTML dentro de otro partial, busca en la carperta
-          <code class="code">./src/html/index.html</code> y
-          <code class="code">./src/html/partials/main.html</code>, y verás cómo estamos creando estos
-          enlaces:
-        </p>
-        <ul class="main__list">
-          <li>
-            <a class="link__adalab" href="https://adalab.es">Adalab</a>
-
-          </li>
-          <li>
-            <a class="" href="./more-info.html">Más info del starter kit</a>
-
-          </li>
-        </ul>
-      </main>
-
-      <footer class="page__footer">
-        <small>
-          &copy; Todos los derechos reservados
-          <a class="link__adalab" href="https://adalab.es">Adalab</a>
-
-        </small>
-      </footer>
-
+<body>
+  <main class="main">
+    <header class="header">
+      <img src="./assets/images/movie.gif" alt="Projector" class="header_logo" />
+      <p class="header-text">
+        Welcome to final evaluation of module 2 made by Silvia Torres. Hope you like it!
+      </p>
+    </header>
+    <section class="info">
+      <h1 class="info-title">Show seeker</h1>
+      <p class="info-text">Have you ever wondered, if there is a web or application from which you can search your series,
+        add them to
+        favorites to keep track of what you’ve seen, or what you want to see and what to recomend? it hasn’t happened to
+        you that
+        you want to recommend THAT show to a friend and you don’t remember his name? With Show Seeker this will not happen
+        again!</p>
+    </section>
+    <div class="list-container">
+      <div class="results-list">
+        <h2 class="js-form-title">Results:</h2>
+        <ul class="js-form-list"></ul>
+      </div>
+      <div class="favorites">
+        <div class="favorites-form">
+          <form class="favorites-form-search">
+            <input class="js-input-search" type="text" placeholder="Search a show">
+            <button class="js-btn-search">Search</button>
+          </form>
+        </div>
+        <h2 class="favorites-title">You favourite shows:</h2>
+        <ul class="js-fav-list"></ul>
+        <button class="js-delete-fav">Erase all</button>
+      </div>
     </div>
-    <script src="./assets/js/main.js"></script>
-  </body>
+    <footer class="footer">
+      <p class="footer-text"> Silvia Torres for Adalab 2023</p>
+      <img class="footer-logo" src="./assets/images/filmTape.png" alt="film tape black and white">
+    </footer>
+  </main>
+  <script src="./assets/js/main.js"></script>
+</body>
+
 </html>
