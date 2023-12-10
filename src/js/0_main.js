@@ -12,6 +12,7 @@ const btnDelete = document.querySelector('.js-delete-fav'); // botón para elimi
 //Otras variables:
 let favList = []; //lista de favoritos
 let showsList = []; // lista de resultados
+const defaultUrl = 'https://api.tvmaze.com/search/shows?q=Simpsons';
 
 // NOTE:Con este bloque de código, compruebo al arrancar la página, que hayan datos en el local stroage
 const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
@@ -30,9 +31,19 @@ const addToFavourites = () => {
   }
 };
 
+function loadDefaultShow() {
+  fetch(defaultUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      showsList = data;
+      renderShow();
+    });
+}
+loadDefaultShow();
+
 // :Función para pintar la lista de resultados:
 function renderShow() {
-  const inputValue = input.value;
+  let inputValue = input.value;
   const URL = `//api.tvmaze.com/search/shows?q=${inputValue}`;
 
   if (inputValue !== '') {
