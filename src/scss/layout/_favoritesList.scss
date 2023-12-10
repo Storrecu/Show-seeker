@@ -1,6 +1,7 @@
 .favorites {
   width: 30vw;
   margin: 0;
+  background-color: #dbe1eb;
   &-form {
     display: flex;
     flex-direction: column-reverse;
@@ -52,16 +53,16 @@ input::placeholder {
 .js-fav-list {
   //UL
   width: 90%;
-  margin-left: 10%;
+  margin: auto;
   list-style: none;
 }
 
 .js-fav {
   //LI
-  background-color: #dbe1eb;
+  background-color: #94a7c3;
   margin: 1rem;
   display: block;
-  color: $color2;
+  color: #fff;
   cursor: pointer;
   &-img {
     margin: auto;
