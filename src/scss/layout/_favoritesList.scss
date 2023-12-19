@@ -59,8 +59,9 @@ input::placeholder {
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto;
   list-style: none;
+  padding-bottom: 1rem;
   @media all and (min-width: 768px) {
     width: 90%;
     margin: auto;
@@ -85,11 +86,11 @@ input::placeholder {
     }
   }
   &-title {
-    margin-left: 25%;
+    text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     display: block;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
     @media all and (min-width: 768px) {
       padding-bottom: 2rem;
     }
@@ -99,7 +100,7 @@ input::placeholder {
     border-radius: 10px;
     width: 20px;
     margin-left: 80%;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     text-align: center;
     cursor: pointer;
     display: inline-block;
@@ -113,11 +114,12 @@ input::placeholder {
 .js-delete-fav {
   color: white;
   padding: 1%;
-  margin: 5%;
+  margin: auto;
+  margin-bottom: 1rem;
   background-color: $color2;
   border: 1px solid $borders;
   border-radius: 10px;
-  margin-left: 40%;
+  display: block;
   cursor: pointer;
   &:hover {
     background-color: $borders;
