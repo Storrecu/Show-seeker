@@ -6,5 +6,11 @@
 
 .list-container {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column-reverse;
+}
+
+@media all and (min-width: 768px) {
+  .list-container {
+    flex-direction: row-reverse;
+  }
 }

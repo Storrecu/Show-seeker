@@ -1,5 +1,5 @@
 .favorites {
-  width: 30vw;
+  width: 100%;
   margin: 0;
   background-color: #dbe1eb;
   &-form {
@@ -12,6 +12,9 @@
       justify-content: center;
       padding: 5%;
     }
+  }
+  @media all and (min-width: 768px) {
+    width: 30vw;
   }
 }
 
@@ -54,40 +57,55 @@ input::placeholder {
   //UL
   width: 90%;
   margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   list-style: none;
+  @media all and (min-width: 768px) {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 .js-fav {
   //LI
   background-color: #94a7c3;
   margin: 1rem;
-  display: block;
   color: #fff;
+  position: relative;
   cursor: pointer;
   &-img {
-    margin: auto;
-    width: 50%;
-    height: 50%;
-    display: block;
+    width: 100%;
     padding: 1rem;
+    @media all and (min-width: 768px) {
+      margin: auto;
+      width: 50%;
+      height: 50%;
+      display: block;
+    }
   }
   &-title {
     margin-left: 25%;
     font-size: 1.5rem;
     font-weight: 600;
     display: block;
-    padding-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    @media all and (min-width: 768px) {
+      padding-bottom: 2rem;
+    }
   }
   &-cross {
     background-color: $color1;
-    border: 1px solid $borders;
     border-radius: 10px;
     width: 20px;
     margin-left: 80%;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     text-align: center;
     cursor: pointer;
     display: inline-block;
+    @media all and (min-width: 768px) {
+      margin-top: 2rem;
+    }
   }
 }
 
