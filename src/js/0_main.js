@@ -12,7 +12,6 @@ const btnDelete = document.querySelector('.js-delete-fav'); // botón para elimi
 //Otras variables:
 let favList = []; //lista de favoritos
 let showsList = []; // lista de resultados
-const defaultUrl = 'https://api.tvmaze.com/search/shows?q=Simpsons';
 
 // NOTE:Con este bloque de código, compruebo al arrancar la página, que hayan datos en el local stroage
 const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
@@ -31,17 +30,36 @@ const addToFavourites = () => {
   }
 };
 
+//Función que se encarga de pintar las etiquetas HTML en función de lo que busca el usuario y lo que responde la API
+const renderList = (resultsList) => {
+  listForm.innerHTML = '';
+  for (const item of resultsList) {
+    let showElement = '';
+    showElement += `
+            <li id="${item.show.id}" class="js-card" >
+            <img class="js-card-img" src="${
+              item.show.image
+                ? item.show.image.medium
+                : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
+            }"/> 
+            <h2 class="js-card-title">${item.show.name} </h2>`;
+    showElement += '</li>';
+    listForm.innerHTML += showElement;
+  }
+};
+
+// Función con la que se pretende mostrar los resultados de una búsqueda por defecto, para que no se vea la páhina vacía al arrancarla
 function loadDefaultShow() {
+  const defaultUrl = 'https://api.tvmaze.com/search/shows?q=love';
   fetch(defaultUrl)
     .then((response) => response.json())
     .then((data) => {
       showsList = data;
-      renderShow();
+      renderList(showsList);
     });
 }
-loadDefaultShow();
 
-// :Función para pintar la lista de resultados:
+// Función para pintar la lista de resultados:
 function renderShow() {
   let inputValue = input.value;
   const URL = `//api.tvmaze.com/search/shows?q=${inputValue}`;
@@ -57,25 +75,12 @@ function renderShow() {
           listForm.innerHTML = 'No matches found.Try a diferent show';
         } else {
           // NOTE:En caso que lo que busco, coincida con la info que tiene la respuesta lo pinto en el HTML
-          listForm.innerHTML = '';
-          for (const item of showsList) {
-            let showElement = '';
-            showElement += `
-            <li id="${item.show.id}" class="js-card" >
-            <img class="js-card-img" src="${
-              item.show.image
-                ? item.show.image.medium
-                : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
-            }"/> 
-            <h2 class="js-card-title">${item.show.name} </h2>`;
-            showElement += '</li>';
-            listForm.innerHTML += showElement;
-          }
+          renderList(showsList);
           addToFavourites();
         }
       });
   } else {
-    listForm.innerHTML = 'Write any show to start';
+    listForm.innerHTML = loadDefaultShow();
   }
 }
 renderShow();
