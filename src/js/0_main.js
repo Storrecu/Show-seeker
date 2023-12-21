@@ -31,18 +31,21 @@ const addToFavourites = () => {
 };
 
 //Función que se encarga de pintar las etiquetas HTML en función de lo que busca el usuario y lo que responde la API
-const renderList = (resultsList) => {
+const renderList = ({ lists, isFavourite = false, classType }) => {
   listForm.innerHTML = '';
-  for (const item of resultsList) {
+  for (const item of lists) {
     let showElement = '';
     showElement += `
-            <li id="${item.show.id}" class="js-card" >
+            <li id=${item.show.id} class=${classType} >
             <img class="js-card-img" src="${
               item.show.image
                 ? item.show.image.medium
                 : '//via.placeholder.com/210x295/ffffff/666666/?text=TV'
             }"/> 
             <h2 class="js-card-title">${item.show.name} </h2>`;
+    if (isFavourite) {
+      showElement += `<span class="js-fav-cross"> X </span>`;
+    }
     showElement += '</li>';
     listForm.innerHTML += showElement;
   }
@@ -55,7 +58,11 @@ function loadDefaultShow() {
     .then((response) => response.json())
     .then((data) => {
       showsList = data;
-      renderList(showsList);
+      renderList({
+        lists: showsList,
+        isFavourite: false,
+        classType: 'js-card',
+      });
     });
 }
 
@@ -75,7 +82,11 @@ function renderShow() {
           listForm.innerHTML = 'No matches found.Try a diferent show';
         } else {
           // NOTE:En caso que lo que busco, coincida con la info que tiene la respuesta lo pinto en el HTML
-          renderList(showsList);
+          renderList({
+            lists: showsList,
+            isFavourite: false,
+            classType: 'js-card',
+          });
           addToFavourites();
         }
       });
