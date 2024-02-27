@@ -19,15 +19,14 @@
   // flex-wrap: wrap;
   // gap: 3rem;
   // list-style: none;
-  width: 90%;
+  width: 100%;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
+  gap: 1.5rem;
   list-style: none;
   @media all and (min-width: 768px) {
-    width: 90%;
-    margin: auto;
   }
 }
 
@@ -48,8 +47,9 @@
   //   overflow-y: auto;
   //   padding-bottom: 2rem;
   // }
+  width: 70%;
   background-color: #9780a8;
-  margin: 1rem;
+  margin: auto;
   color: #fff;
   position: relative;
   cursor: pointer;
